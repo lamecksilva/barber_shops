@@ -1,6 +1,8 @@
 import 'package:barber_shops/modules/home/controller/home_controller.dart';
 import 'package:barber_shops/modules/home/models/category_product.dart';
+import 'package:barber_shops/modules/home/models/establishment.dart';
 import 'package:barber_shops/services/widgets/c_category_products.dart';
+import 'package:barber_shops/services/widgets/c_establishment.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,6 +33,21 @@ List categoryProducts = [
       name: "Massagem Facial",
       pictureThumb:
           "https://plus.unsplash.com/premium_photo-1669675935219-65c626a3e260"),
+];
+
+List establishments = [
+  Establishment(
+      sId: "abc",
+      distance: 0.35,
+      name: "Barbearia abc",
+      pictureUrl:
+          "https://images.unsplash.com/photo-1576168056582-0a851a87ab8e"),
+  Establishment(
+      sId: "abc1",
+      distance: 0.80,
+      name: "Barbearia Exemplo 2",
+      pictureUrl:
+          "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8"),
 ];
 
 class HomePage extends GetView<HomeController> {
@@ -145,44 +162,9 @@ class HomePage extends GetView<HomeController> {
               height: MediaQuery.of(context).size.height - 500,
               child: ListView(
                 scrollDirection: Axis.vertical,
-                children: [
-                  Container(
-                    height: 100,
-                    color: Colors.black54,
-                    margin: const EdgeInsets.only(
-                      left: 16.0,
-                      right: 16.0,
-                      bottom: 8.0,
-                    ),
-                  ),
-                  Container(
-                    height: 100,
-                    color: Colors.black54,
-                    margin: const EdgeInsets.only(
-                      left: 16.0,
-                      right: 16.0,
-                      bottom: 8.0,
-                    ),
-                  ),
-                  Container(
-                    height: 100,
-                    color: Colors.black54,
-                    margin: const EdgeInsets.only(
-                      left: 16.0,
-                      right: 16.0,
-                      bottom: 8.0,
-                    ),
-                  ),
-                  Container(
-                    height: 100,
-                    color: Colors.black54,
-                    margin: const EdgeInsets.only(
-                      left: 16.0,
-                      right: 16.0,
-                      bottom: 8.0,
-                    ),
-                  ),
-                ],
+                children: establishments
+                    .map((i) => CEstablishment(establishmentData: i))
+                    .toList(),
               ),
             )
           ],
