@@ -1,5 +1,7 @@
+import 'package:barber_shops/modules/establishment/routes/establishment_routes.dart';
 import 'package:barber_shops/modules/home/models/establishment.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CEstablishment extends StatelessWidget {
   const CEstablishment({super.key, required this.establishmentData});
@@ -79,7 +81,8 @@ class CEstablishment extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  print('Ver Mais button');
+                  Get.toNamed(EstablishmentRoutes.ESTABLISHMENT_DETAILS,
+                      arguments: establishmentData.sId);
                 },
                 child: const Icon(
                   Icons.keyboard_arrow_right,

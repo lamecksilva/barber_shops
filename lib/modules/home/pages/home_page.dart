@@ -48,6 +48,18 @@ List establishments = [
       name: "Barbearia Exemplo 2",
       pictureUrl:
           "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8"),
+  Establishment(
+      sId: "abc12",
+      distance: 1.57,
+      name: "Gringo Barbershop",
+      pictureUrl:
+          "https://images.unsplash.com/photo-1576168056582-0a851a87ab8e"),
+  Establishment(
+      sId: "abc123",
+      distance: 2.80,
+      name: "Lameco Barber",
+      pictureUrl:
+          "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8"),
 ];
 
 class HomePage extends GetView<HomeController> {
