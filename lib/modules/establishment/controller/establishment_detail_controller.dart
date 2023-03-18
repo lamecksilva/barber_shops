@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:barber_shops/services/my_api_client.dart';
 import 'package:get/get.dart';
 
 class EstablishmentDetailController extends GetxController {
@@ -5,16 +8,22 @@ class EstablishmentDetailController extends GetxController {
 
   final String establishmentId = Get.arguments;
 
-  final _obj = ''.obs;
-  set obj(value) => _obj.value = value;
-  get obj => _obj.value;
+  final MyApiClient apiClient = MyApiClient();
+  Rxn<List<dynamic>> users = Rxn<List<dynamic>>();
 
   @override
   void onInit() {
-    // TODO: implement onInit
-    print(Get.arguments);
-    print(establishmentId);
-
     super.onInit();
+    fetchUsers();
+  }
+
+  Future<void> fetchUsers() async {
+    final response = await apiClient.getUsers();
+    if (response.status.hasError) {
+      // Tratar erro
+      print('Ocorreu um erro');
+    } else {
+      users.value = jsonDecode(response.body);
+    }
   }
 }

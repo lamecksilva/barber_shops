@@ -13,13 +13,25 @@ class EstablishmentDetailPage extends GetView<EstablishmentDetailController> {
       ),
       body: SafeArea(
         child: Container(
-          decoration: BoxDecoration(
-            color: Colors.grey.shade300,
-          ),
-          child: Text(
-            'Detalhes do Estabelecimento ${controller.establishmentId}',
-          ),
-        ),
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+            ),
+            child: Obx(() {
+              if (controller.users.value == null) {
+                return const CircularProgressIndicator();
+              } else {
+                return ListView.builder(
+                  itemCount: controller.users.value?.length,
+                  itemBuilder: (context, index) {
+                    final user = controller.users.value?[index];
+                    return ListTile(
+                      title: Text(user['name']),
+                      subtitle: Text(user['email']),
+                    );
+                  },
+                );
+              }
+            })),
       ),
     );
   }
